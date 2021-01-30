@@ -1,25 +1,12 @@
 #!/bin/bash
 
-# Install dot files
-
-# Install gh
-# Change default shell to zsh
-# Add oh-my-zsh
-# Add gs alias
-# Add ./node_modules/.bin to path
-# Add venv/bin to path
-
-
-echo "Hello! "
-
-
 # APT
 export DEBIAN_FRONTEND=noninteractive
-apt-get update
-apt-get install -y zsh fzf vim
-apt-get autoremove -y
-apt-get clean -y
-rm -rf /var/lib/apt/lists/*
+sudo apt-get update
+sudo apt-get install -y zsh fzf vim
+sudo apt-get autoremove -y
+sudo apt-get clean -y
+sudo rm -rf /var/lib/apt/lists/*
 
 # Git
 ln -sf ~/dotfiles/config/.gitconfig ~
@@ -30,7 +17,7 @@ curl -s https://api.github.com/repos/cli/cli/releases/latest \
   | jq '.assets[] | select(.name | endswith("_linux_amd64.deb")).browser_download_url' \
   | xargs curl -O -L
 
-apt-get install -y ./gh_*.deb
+sudo apt-get install -y ./gh_*.deb
 rm ./gh_*.deb
 
 # ZSH
