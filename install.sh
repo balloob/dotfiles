@@ -8,8 +8,6 @@ ln -sf ~/dotfiles/config/.gitignore ~
 # ZSH
 ln -sf ~/dotfiles/config/.zshrc ~/.zshrc
 
-chsh -s $(which zsh)
-
 # Oh My ZSH
 rm -rf ~/.oh-my-zsh
 touch ~/.z  # So it doesn't complain on very first usage
@@ -37,3 +35,5 @@ sudo apt-get install -y zsh fzf vim
 sudo apt-get autoremove -y
 sudo apt-get clean -y
 sudo rm -rf /var/lib/apt/lists/*
+
+chsh -s $(which zsh)
