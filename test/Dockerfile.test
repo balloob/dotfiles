@@ -3,11 +3,6 @@ FROM mcr.microsoft.com/vscode/devcontainers/python:0-3.8
 
 WORKDIR /workspaces
 
-# RUN apt install -y build-essential direnv zsh vim
-
-# RUN sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" \
-#     && echo 'eval "$(direnv hook zsh)"' >> "/root/.zshrc"
-
 COPY . /root/dotfiles
 RUN /root/dotfiles/install.sh
 
