@@ -37,3 +37,5 @@ sudo apt-get clean -y
 sudo rm -rf /var/lib/apt/lists/*
 
 chsh -s $(which zsh)
+
+echo "Done"
