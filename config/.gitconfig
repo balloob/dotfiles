@@ -1,0 +1,30 @@
+[user]
+	email = balloob@gmail.com
+	name = Paulus Schoutsen
+
+[core]
+	editor = vim
+	excludesfile = ~/.gitignore
+
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  ui = true
+
+[apply]
+  whitespace = nowarn
+
+[mergetool]
+  keepBackup = false
+
+[difftool]
+  prompt = false
+
+[grep]
+  linenumber = true
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process

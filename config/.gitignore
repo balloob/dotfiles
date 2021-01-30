@@ -1,0 +1,6 @@
+.DS_Store
+*~
+*.swp
+pyvenv.cfg
+pip-selfcheck.json
+.vscode
