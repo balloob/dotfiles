@@ -26,7 +26,7 @@ curl -s https://api.github.com/repos/cli/cli/releases/latest \
   | jq '.assets[] | select(.name | endswith("_linux_amd64.deb")).browser_download_url' \
   | xargs curl -O -L
 
-sudo apt-get install -y ./gh_*.deb
+sudo dpkg -i ./gh_*.deb
 rm ./gh_*.deb
 
 # APT
