@@ -32,9 +32,6 @@ rm ./gh_*.deb
 # APT
 sudo apt-get update
 sudo apt-get install -y zsh fzf vim
-sudo apt-get autoremove -y
-sudo apt-get clean -y
-sudo rm -rf /var/lib/apt/lists/*
 
 chsh -s $(which zsh)
 
