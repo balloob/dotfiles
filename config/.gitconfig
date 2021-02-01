@@ -2,6 +2,9 @@
 	editor = vim
 	excludesfile = ~/.gitignore
 
+[pull]
+	ff = only
+
 [color]
   diff = auto
   status = auto
