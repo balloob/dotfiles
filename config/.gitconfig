@@ -1,7 +1,3 @@
-[user]
-	email = balloob@gmail.com
-	name = Paulus Schoutsen
-
 [core]
 	editor = vim
 	excludesfile = ~/.gitignore
