@@ -32,5 +32,3 @@ alias gs="git status -sb"
 export PATH="./venv/bin:./node_modules/.bin:~/bin:$PATH"
 
 [ -f ~/.iterm2_shell_integration.zsh ] && source ~/.iterm2_shell_integration.zsh
-
-GIT_EDITOR=code --wait
