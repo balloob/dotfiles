@@ -1,5 +1,4 @@
 #!/bin/bash
-export DEBIAN_FRONTEND=noninteractive
 
 # Git
 ln -sf ~/dotfiles/config/.gitconfig ~
@@ -7,15 +6,15 @@ ln -sf ~/dotfiles/config/.gitignore ~
 
 # APT
 echo
-echo "Installing apt packages"
+echo "** Installing apt packages"
 sudo apt-get update
-sudo apt-get install -y --no-install-recommends zsh fzf vim jq
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends zsh fzf vim jq
 
 chsh -s $(which zsh)
 
 # GH CLI
 echo
-echo "Downloading GitHub CLI"
+echo "** Downloading GitHub CLI"
 curl -s https://api.github.com/repos/cli/cli/releases/latest \
   | jq '.assets[] | select(.name | endswith("_linux_amd64.deb")).browser_download_url' \
   | xargs curl -O -L
@@ -28,7 +27,7 @@ ln -sf ~/dotfiles/config/.zshrc ~/.zshrc
 
 # Oh My ZSH
 echo
-echo "Installing Oh My Zsh"
+echo "** Installing Oh My Zsh"
 rm -rf ~/.oh-my-zsh
 touch ~/.z  # So it doesn't complain on very first usage
 CHSH=no RUNZSH=no KEEP_ZSHRC=yes sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -42,4 +41,4 @@ git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/cust
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting --depth 1
 
 echo
-echo "Done"
+echo "** Done"
