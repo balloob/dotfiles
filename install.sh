@@ -5,9 +5,6 @@ export DEBIAN_FRONTEND=noninteractive
 ln -sf ~/dotfiles/config/.gitconfig ~
 ln -sf ~/dotfiles/config/.gitignore ~
 
-sudo dpkg -i ./gh_*.deb
-rm ./gh_*.deb
-
 # APT
 sudo apt-get update
 sudo apt-get install -y zsh fzf vim jq
@@ -18,6 +15,9 @@ chsh -s $(which zsh)
 curl -s https://api.github.com/repos/cli/cli/releases/latest \
   | jq '.assets[] | select(.name | endswith("_linux_amd64.deb")).browser_download_url' \
   | xargs curl -O -L
+
+sudo dpkg -i ./gh_*.deb
+rm ./gh_*.deb
 
 # ZSH
 ln -sf ~/dotfiles/config/.zshrc ~/.zshrc
