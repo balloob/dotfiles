@@ -5,19 +5,19 @@ export DEBIAN_FRONTEND=noninteractive
 ln -sf ~/dotfiles/config/.gitconfig ~
 ln -sf ~/dotfiles/config/.gitignore ~
 
-# GH CLI
-curl -s https://api.github.com/repos/cli/cli/releases/latest \
-  | jq '.assets[] | select(.name | endswith("_linux_amd64.deb")).browser_download_url' \
-  | xargs curl -O -L
-
 sudo dpkg -i ./gh_*.deb
 rm ./gh_*.deb
 
 # APT
 sudo apt-get update
-sudo apt-get install -y zsh fzf vim
+sudo apt-get install -y zsh fzf vim jq
 
 chsh -s $(which zsh)
+
+# GH CLI
+curl -s https://api.github.com/repos/cli/cli/releases/latest \
+  | jq '.assets[] | select(.name | endswith("_linux_amd64.deb")).browser_download_url' \
+  | xargs curl -O -L
 
 # ZSH
 ln -sf ~/dotfiles/config/.zshrc ~/.zshrc
