@@ -10,7 +10,8 @@ echo "** Installing apt packages"
 sudo -n apt-get update
 sudo -n DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends zsh fzf vim jq
 
-chsh -s $(which zsh)
+USER=`whoami`
+sudo -n chsh $USER -s $(which zsh)
 
 # GH CLI
 echo
