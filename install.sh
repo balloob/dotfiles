@@ -7,8 +7,8 @@ ln -sf ~/dotfiles/config/.gitignore ~
 # APT
 echo
 echo "** Installing apt packages"
-sudo apt-get update
-sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends zsh fzf vim jq
+sudo -n apt-get update
+sudo -n DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends zsh fzf vim jq
 
 chsh -s $(which zsh)
 
@@ -19,7 +19,7 @@ curl -s https://api.github.com/repos/cli/cli/releases/latest \
   | jq '.assets[] | select(.name | endswith("_linux_amd64.deb")).browser_download_url' \
   | xargs curl -O -L
 
-sudo dpkg -i ./gh_*.deb
+sudo -n dpkg -i ./gh_*.deb
 rm ./gh_*.deb
 
 # ZSH
