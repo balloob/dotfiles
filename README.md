@@ -1,6 +1,6 @@
 # Dotfiles
 
-Used to be automatically added to my VS Code dev containers and GitHub Codespaces.
+Setup scripts that are automatically added to my VS Code dev containers and GitHub Codespaces.
 
 ## Using with dev containers
 
@@ -13,11 +13,12 @@ Add this to your VS Code settings:
 ```json
 {
   "dotfiles.repository": "balloob/dotfiles",
+  "remote.containers.dotfiles.repository": "balloob/dotfiles",
   "terminal.integrated.env.linux": {
-    "GIT_COMMITTER_NAME": "Paulus Schoutsen",
-    "GIT_COMMITTER_EMAIL": "balloob@gmail.com",
-    "GIT_AUTHOR_NAME": "Paulus Schoutsen",
-    "GIT_AUTHOR_EMAIL": "balloob@gmail.com"
+    "GIT_COMMITTER_NAME": "Your Name",
+    "GIT_COMMITTER_EMAIL": "your@email.com",
+    "GIT_AUTHOR_NAME": "Your Name",
+    "GIT_AUTHOR_EMAIL": "your@email.com"
   }
 }
 ```
