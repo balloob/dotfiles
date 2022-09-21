@@ -1,8 +1,10 @@
 #!/bin/bash
 
+DOTFILES_DIR=`pwd`
+
 # Git
-ln -sf ~/dotfiles/config/.gitconfig ~
-ln -sf ~/dotfiles/config/.gitignore ~
+ln -sf $DOTFILES_DIR/config/.gitconfig ~
+ln -sf $DOTFILES_DIR/config/.gitignore ~
 
 # APT
 echo
@@ -24,7 +26,7 @@ sudo -n dpkg -i ./gh_*.deb
 rm ./gh_*.deb
 
 # ZSH
-ln -sf ~/dotfiles/config/.zshrc ~/.zshrc
+ln -sf $DOTFILES_DIR/config/.zshrc ~/.zshrc
 
 # Oh My ZSH
 echo
@@ -35,7 +37,7 @@ CHSH=no RUNZSH=no KEEP_ZSHRC=yes sh -c "$(curl -fsSL https://raw.github.com/ohmy
 
 # Oh my ZSH theme
 git clone https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k --depth 1
-ln -sf ~/dotfiles/config/.p10k.zsh ~/.p10k.zsh
+ln -sf $DOTFILES_DIR/config/.p10k.zsh ~/.p10k.zsh
 
 # Oh my ZSH plugin
 git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions --depth 1
