@@ -25,6 +25,9 @@ curl -s https://api.github.com/repos/cli/cli/releases/latest \
 sudo -n dpkg -i ./gh_*.deb
 rm ./gh_*.deb
 
+# UV
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
 # ZSH
 ln -sf $DOTFILES_DIR/config/.zshrc ~/.zshrc
 
