@@ -29,6 +29,6 @@ alias gs="git status -sb"
 [ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh
 
 # Automatically check venv and node modules for executables
-export PATH="./.venv/bin:./venv/bin:./node_modules/.bin:~/bin:$PATH"
+export PATH="./.venv/bin:./node_modules/.bin:~/bin:$HOME/.local/bin/env:$PATH"
 
 [ -f ~/.iterm2_shell_integration.zsh ] && source ~/.iterm2_shell_integration.zsh
