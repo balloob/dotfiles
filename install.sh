@@ -32,6 +32,9 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 NVM_VERSION=v0.40.3
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/$NVM_VERSION/install.sh | bash
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
 nvm install --lts
 nvm use --lts
 

@@ -3,8 +3,8 @@ export SHELL=/usr/bin/zsh
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
+# Disable marking untracked files under VCS as dirty.
+# This makes repository status check for large repositories
 # much, much faster.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
@@ -32,3 +32,6 @@ alias gs="git status -sb"
 export PATH="./.venv/bin:./node_modules/.bin:~/bin:$HOME/.local/bin/env:$PATH"
 
 [ -f ~/.iterm2_shell_integration.zsh ] && source ~/.iterm2_shell_integration.zsh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
