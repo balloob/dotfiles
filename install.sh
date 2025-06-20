@@ -28,6 +28,16 @@ rm ./gh_*.deb
 # UV
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
+# NVM/Node.js
+NVM_VERSION=v0.40.3
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/$NVM_VERSION/install.sh | bash
+
+nvm install --lts
+nvm use --lts
+
+# Claude Code CLI
+npm install -g @anthropic-ai/claude-code
+
 # ZSH
 ln -sf $DOTFILES_DIR/config/.zshrc ~/.zshrc
 
