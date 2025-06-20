@@ -4,3 +4,4 @@
 pyvenv.cfg
 pip-selfcheck.json
 .vscode
+.claude/settings.local.json
