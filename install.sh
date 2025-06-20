@@ -10,7 +10,7 @@ ln -sf $DOTFILES_DIR/config/.gitignore ~
 echo
 echo "** Installing apt packages"
 sudo -n apt-get update
-sudo -n DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends zsh fzf vim jq
+sudo -n DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends zsh fzf vim jq ripgrep
 
 USER=`whoami`
 sudo -n chsh $USER -s $(which zsh)
