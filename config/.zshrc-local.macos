@@ -1,0 +1,8 @@
+# Homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# fzf
+[ -f /opt/homebrew/opt/fzf/shell/key-bindings.zsh ] && source /opt/homebrew/opt/fzf/shell/key-bindings.zsh
+
+# iTerm2 integration
+[ -f ~/.iterm2_shell_integration.zsh ] && source ~/.iterm2_shell_integration.zsh

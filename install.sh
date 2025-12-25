@@ -28,18 +28,21 @@ rm ./gh_*.deb
 # UV
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
-# NVM/Node.js
+# NVM/Node.js (PROFILE=/dev/null prevents nvm from modifying shell config)
 export NVM_DIR="$HOME/.nvm"
 NVM_VERSION=v0.40.3
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/$NVM_VERSION/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/$NVM_VERSION/install.sh | PROFILE=/dev/null bash
 
 source "$NVM_DIR/nvm.sh"
 
 nvm install --lts
 nvm use --lts
 
-# Claude Code CLI
+# Claude Code
 npm install -g @anthropic-ai/claude-code
+
+# OpenCode
+curl -fsSL https://opencode.ai/install | bash
 
 # ZSH
 ln -sf $DOTFILES_DIR/config/.zshrc ~/.zshrc
@@ -48,7 +51,6 @@ ln -sf $DOTFILES_DIR/config/.zshrc ~/.zshrc
 echo
 echo "** Installing Oh My Zsh"
 rm -rf ~/.oh-my-zsh
-touch ~/.z  # So it doesn't complain on very first usage
 CHSH=no RUNZSH=no KEEP_ZSHRC=yes sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # Oh my ZSH theme
@@ -58,6 +60,15 @@ ln -sf $DOTFILES_DIR/config/.p10k.zsh ~/.p10k.zsh
 # Oh my ZSH plugin
 git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions --depth 1
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting --depth 1
+
+# Create .zshrc-local with platform-specific config
+echo
+echo "** Creating .zshrc-local"
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  cp $DOTFILES_DIR/config/.zshrc-local.macos ~/.zshrc-local
+else
+  cp $DOTFILES_DIR/config/.zshrc-local.linux ~/.zshrc-local
+fi
 
 echo
 echo "** Done"
