@@ -44,6 +44,10 @@ npm install -g @anthropic-ai/claude-code
 # OpenCode
 curl -fsSL https://opencode.ai/install | bash
 
+# OpenCode config
+mkdir -p ~/.config/opencode
+ln -sf $DOTFILES_DIR/config/opencode.json ~/.config/opencode/opencode.json
+
 # ZSH
 ln -sf $DOTFILES_DIR/config/.zshrc ~/.zshrc
 
