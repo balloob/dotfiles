@@ -1,52 +1,27 @@
 #!/bin/bash
 
-DOTFILES_DIR=`pwd`
+set -e
+
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+echo -e "${GREEN}Starting dotfiles installation...${NC}"
 
 # Git
 ln -sf $DOTFILES_DIR/config/.gitconfig ~
 ln -sf $DOTFILES_DIR/config/.gitignore ~
 
-# APT
-echo
-echo "** Installing apt packages"
-sudo -n apt-get update
-sudo -n DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends zsh fzf vim jq ripgrep
-
-USER=`whoami`
-sudo -n chsh $USER -s $(which zsh)
-
-# GH CLI
-echo
-echo "** Downloading GitHub CLI"
-curl -s https://api.github.com/repos/cli/cli/releases/latest \
-  | jq '.assets[] | select(.name | endswith("_linux_amd64.deb","_linux_arm64.deb")).browser_download_url' \
-  | xargs curl -OO -L
-
-sudo -n dpkg -i ./gh_*.deb
-rm ./gh_*.deb
-
-# UV
-curl -LsSf https://astral.sh/uv/install.sh | sh
-
-# NVM/Node.js (PROFILE=/dev/null prevents nvm from modifying shell config)
-export NVM_DIR="$HOME/.nvm"
-NVM_VERSION=v0.40.3
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/$NVM_VERSION/install.sh | PROFILE=/dev/null bash
-
-source "$NVM_DIR/nvm.sh"
-
-nvm install --lts
-nvm use --lts
-
-# Claude Code
-npm install -g @anthropic-ai/claude-code
-
-# OpenCode
-curl -fsSL https://opencode.ai/install | bash
-
-# OpenCode config
-mkdir -p ~/.config/opencode
-ln -sf $DOTFILES_DIR/config/opencode.json ~/.config/opencode/opencode.json
+# Run platform-specific installer
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    source "$DOTFILES_DIR/install-macos.sh"
+else
+    source "$DOTFILES_DIR/install-linux.sh"
+fi
 
 # ZSH
 ln -sf $DOTFILES_DIR/config/.zshrc ~/.zshrc
@@ -65,14 +40,18 @@ ln -sf $DOTFILES_DIR/config/.p10k.zsh ~/.p10k.zsh
 git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions --depth 1
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting --depth 1
 
-# Create .zshrc-local with platform-specific config
+# Link .zshrc-local with platform-specific config
 echo
 echo "** Creating .zshrc-local"
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  cp $DOTFILES_DIR/config/.zshrc-local.macos ~/.zshrc-local
+    ln -sf $DOTFILES_DIR/config/.zshrc-local.macos ~/.zshrc-local
 else
-  cp $DOTFILES_DIR/config/.zshrc-local.linux ~/.zshrc-local
+    ln -sf $DOTFILES_DIR/config/.zshrc-local.linux ~/.zshrc-local
 fi
 
+# OpenCode config
+mkdir -p ~/.config/opencode
+ln -sf $DOTFILES_DIR/config/opencode.json ~/.config/opencode/opencode.json
+
 echo
-echo "** Done"
+echo -e "${GREEN}** Done${NC}"
