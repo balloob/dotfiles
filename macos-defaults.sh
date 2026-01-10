@@ -252,8 +252,8 @@ sudo pmset womp 1
 # Screen Saver & Lock Screen                                                  #
 ###############################################################################
 
-# Start screen saver after 2 minutes of inactivity
-defaults -currentHost write com.apple.screensaver idleTime -int 120
+# Disable screen saver (0 = never)
+defaults -currentHost write com.apple.screensaver idleTime -int 0
 
 # Require password when screen saver starts
 defaults write com.apple.screensaver askForPassword -int 1
