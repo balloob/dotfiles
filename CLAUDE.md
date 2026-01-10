@@ -12,7 +12,7 @@
 ## Build, Test, and Development Commands
 - `./install.sh` sets up a new machine (Xcode tools, Homebrew, symlinks, Rust, Node, Codex).
 - `./macos-defaults.sh` applies macOS preferences (Finder, Dock, keyboard, etc.).
-- `brew bundle dump --force` updates `Brewfile` after app changes.
+- `brew bundle dump --force --no-vscode` updates `Brewfile` after app changes.
 - `brew update && brew upgrade` keeps Homebrew packages current.
 
 ## Coding Style & Naming Conventions

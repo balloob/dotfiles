@@ -1,27 +1,36 @@
+brew "glib"
+brew "cairo"
+brew "ripgrep"
 brew "codex"
+brew "unbound"
+brew "harfbuzz"
+brew "libass"
+brew "librist"
+brew "pango"
+brew "tesseract"
 brew "ffmpeg"
 brew "fzf"
 brew "gh"
-brew "git-delta"
 brew "git"
+brew "git-delta"
 brew "graphicsmagick"
 brew "jq"
 brew "make"
+brew "mas"
 brew "nvm"
 brew "opencode"
-brew "ripgrep"
 brew "tmux"
 brew "yarn"
-cask "1password-cli"
 cask "1password"
+cask "1password-cli"
 cask "affinity-designer"
 cask "arc"
 cask "balenaetcher"
 cask "bambu-studio"
 cask "calibre"
 cask "chatgpt"
-cask "claude-code"
 cask "claude"
+cask "claude-code"
 cask "cleanshot"
 cask "codex"
 cask "discord"
@@ -120,5 +129,15 @@ cask "visual-studio-code"
 cask "vlc"
 cask "whatsapp"
 cask "zoom"
+mas "Affinity Designer", id: 824171161
+mas "Amphetamine", id: 937984704
+mas "Discovery", id: 1381004916
+mas "iMovie", id: 408981434
 mas "Keynote", id: 409183694
+mas "NextDNS", id: 1464122853
 mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "Pixelmator Pro", id: 1289583905
+mas "Slack", id: 803453959
+mas "Spokenly", id: 6740315592
+mas "Xcode", id: 497799835
