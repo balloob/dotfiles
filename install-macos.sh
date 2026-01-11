@@ -18,3 +18,9 @@ brew bundle --file="$DOTFILES_DIR/Brewfile"
 # Apply macOS system preferences
 echo -e "\n${GREEN}Applying macOS system preferences...${NC}"
 "$DOTFILES_DIR/macos-defaults.sh"
+
+# Claude Code
+curl -fsSL https://claude.ai/install.sh | bash
+
+# OpenCode
+curl -fsSL https://opencode.ai/install | bash
