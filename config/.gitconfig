@@ -29,3 +29,5 @@
 	process = git-lfs filter-process
 [init]
 	defaultBranch = main
+[rerere]
+	enabled = true
