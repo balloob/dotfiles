@@ -25,6 +25,9 @@ source $ZSH/oh-my-zsh.sh
 # Disable share history across consoles
 unsetopt share_history
 
+# Disable auto cd (typing directory name changes to it)
+unsetopt AUTO_CD
+
 # Aliases
 alias gs="git status -sb"
 note() { echo -e "\n\n[$(date "+%Y-%m-%d %H:%M:%S")]\n$*" >> ~/Notes/00\ To\ Do/Latest.md && echo "Note added!"; }
