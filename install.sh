@@ -53,11 +53,12 @@ fi
 mkdir -p ~/.config/opencode
 ln -sf $DOTFILES_DIR/config/opencode.json ~/.config/opencode/opencode.json
 
-# Claude Code config
+# AI agent config (Claude Code & OpenCode)
 echo
-echo "** Setting up Claude Code config"
+echo "** Setting up AI agent config"
 mkdir -p ~/.claude
-ln -sf $DOTFILES_DIR/config/CLAUDE.md ~/.claude/CLAUDE.md
+ln -sf $DOTFILES_DIR/config/AGENTS.md ~/.claude/CLAUDE.md
+ln -sf $DOTFILES_DIR/config/AGENTS.md ~/.config/opencode/AGENTS.md
 
 echo
 echo -e "${GREEN}** Done${NC}"
