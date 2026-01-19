@@ -53,5 +53,11 @@ fi
 mkdir -p ~/.config/opencode
 ln -sf $DOTFILES_DIR/config/opencode.json ~/.config/opencode/opencode.json
 
+# Claude Code config
+echo
+echo "** Setting up Claude Code config"
+mkdir -p ~/.claude
+ln -sf $DOTFILES_DIR/config/CLAUDE.md ~/.claude/CLAUDE.md
+
 echo
 echo -e "${GREEN}** Done${NC}"
