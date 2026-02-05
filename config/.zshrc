@@ -33,7 +33,7 @@ alias gs="git status -sb"
 note() { echo -e "\n\n[$(date "+%Y-%m-%d %H:%M:%S")]\n$*" >> ~/Notes/00\ To\ Do/Latest.md && echo "Note added!"; }
 
 # PATH setup (before lazy-loaded tools)
-export PATH="$HOME/.opencode/bin:./.venv/bin:./node_modules/.bin:~/bin:$HOME/.local/bin/env:$HOME/.local/bin:$PATH"
+export PATH="$HOME/.opencode/bin:./.venv/bin:./node_modules/.bin:~/bin:$HOME/.local/bin:$PATH"
 
 # Source local config (machine-specific settings like Homebrew)
 # Note: NVM should NOT be in .zshrc-local - it's lazy-loaded below
@@ -54,8 +54,6 @@ node() { lazy_load_nvm && node "$@"; }
 npm() { lazy_load_nvm && npm "$@"; }
 npx() { lazy_load_nvm && npx "$@"; }
 pnpm() { lazy_load_nvm && pnpm "$@"; }
-
-
 
 # Powerlevel10k config
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
