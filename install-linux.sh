@@ -15,12 +15,13 @@ sudo -n chsh $USER -s $(which zsh)
 # GH CLI
 echo
 echo "** Downloading GitHub CLI"
+ARCH=$(dpkg --print-architecture)
 curl -s https://api.github.com/repos/cli/cli/releases/latest \
-  | jq '.assets[] | select(.name | endswith("_linux_amd64.deb","_linux_arm64.deb")).browser_download_url' \
-  | xargs curl -OO -L
+  | jq -r ".assets[] | select(.name | endswith(\"_linux_${ARCH}.deb\")).browser_download_url" \
+  | xargs curl -O -L
 
-sudo -n dpkg -i ./gh_*.deb
-rm ./gh_*.deb
+sudo -n dpkg -i ./gh_*_linux_${ARCH}.deb
+rm ./gh_*_linux_${ARCH}.deb
 
 # UV
 curl -LsSf https://astral.sh/uv/install.sh | sh
