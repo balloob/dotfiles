@@ -84,6 +84,7 @@ cask "font-liberation-nerd-font"
 cask "font-lilex-nerd-font"
 cask "font-m+-nerd-font"
 cask "font-martian-mono-nerd-font"
+cask "font-meslo-lg-nerd-font"
 cask "font-monaspice-nerd-font"
 cask "font-monocraft-nerd-font"
 cask "font-monofur-nerd-font"
@@ -119,6 +120,7 @@ cask "mullvad-vpn"
 cask "obs"
 cask "obsidian"
 cask "ollama-app"
+cask "opencode-desktop"
 cask "orbstack"
 cask "raspberry-pi-imager"
 cask "rectangle"
@@ -139,6 +141,4 @@ mas "NextDNS", id: 1464122853
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Pixelmator Pro", id: 1289583905
-mas "Slack", id: 803453959
 mas "Spokenly", id: 6740315592
-mas "Xcode", id: 497799835
