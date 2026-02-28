@@ -7,6 +7,7 @@ DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 if ! command -v brew &> /dev/null; then
     echo -e "${YELLOW}Homebrew not found. Installing Homebrew...${NC}"
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    eval "$(/opt/homebrew/bin/brew shellenv)"
 else
     echo -e "${GREEN}Homebrew already installed${NC}"
 fi
