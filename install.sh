@@ -49,6 +49,11 @@ else
     ln -sf $DOTFILES_DIR/config/.zshrc-local.linux ~/.zshrc-local
 fi
 
+# uv
+echo
+echo "** Installing uv"
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
 # OpenCode config
 mkdir -p ~/.config/opencode
 ln -sf $DOTFILES_DIR/config/opencode.json ~/.config/opencode/opencode.json
