@@ -16,6 +16,16 @@ fi
 echo -e "\n${GREEN}Installing Homebrew packages from Brewfile...${NC}"
 brew bundle --file="$DOTFILES_DIR/Brewfile"
 
+# Install Codex CLI via npm so it can update itself independently of Homebrew.
+echo -e "\n${GREEN}Installing Codex CLI via npm...${NC}"
+if command -v npm &> /dev/null; then
+    npm install -g @openai/codex
+    echo -e "${GREEN}Codex CLI installed${NC}"
+    echo -e "${GREEN}Run 'codex app' to download and launch the Codex macOS app.${NC}"
+else
+    echo -e "${YELLOW}npm not found. Skipping Codex CLI install.${NC}"
+fi
+
 # Apply macOS system preferences
 echo -e "\n${GREEN}Applying macOS system preferences...${NC}"
 "$DOTFILES_DIR/macos-defaults.sh"

@@ -10,7 +10,7 @@
 - `README.md` documents setup, maintenance, and the expected layout.
 
 ## Build, Test, and Development Commands
-- `./install.sh` sets up a new machine (Xcode tools, Homebrew, symlinks, Rust, Node, Codex).
+- `./install.sh` sets up a new machine (Xcode tools, Homebrew, symlinks, and Codex CLI/App bootstrap).
 - `./macos-defaults.sh` applies macOS preferences (Finder, Dock, keyboard, etc.).
 - `brew bundle dump --force --no-vscode` updates `Brewfile` after app changes.
 - `brew update && brew upgrade` keeps Homebrew packages current.
@@ -26,7 +26,7 @@
 - Validate changes manually by running the relevant script (e.g., `./install.sh` on a clean setup) and checking updated symlinks or configs.
 
 ## Commit & Pull Request Guidelines
-- Commit messages follow Conventional Commits (examples: `feat: add codex to Brewfile`, `refactor: simplified new branch alias`).
+- Commit messages follow Conventional Commits (examples: `feat: add codex installer step`, `refactor: simplified new branch alias`).
 - Keep commits focused (one logical change per commit).
 - PRs should describe the change, list commands run (if any), and note any manual steps needed.
 
