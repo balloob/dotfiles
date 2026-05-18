@@ -39,21 +39,32 @@ export PATH="$HOME/.opencode/bin:./.venv/bin:./node_modules/.bin:~/bin:$HOME/.lo
 # Note: NVM should NOT be in .zshrc-local - it's lazy-loaded below
 source ~/.zshrc-local
 
-# Lazy load NVM - only loads when you actually use node/npm/nvm
+# NVM setup
 export NVM_DIR="$HOME/.nvm"
-lazy_load_nvm() {
-  unset -f nvm node npm npx pnpm
+if [[ -o interactive ]]; then
+  # Lazy load NVM in interactive shells for faster startup
+  lazy_load_nvm() {
+    unset -f nvm node npm npx pnpm codex
+    if [ -s "/opt/homebrew/opt/nvm/nvm.sh" ]; then
+      \. "/opt/homebrew/opt/nvm/nvm.sh"
+    elif [ -s "$NVM_DIR/nvm.sh" ]; then
+      \. "$NVM_DIR/nvm.sh"
+    fi
+  }
+  nvm() { lazy_load_nvm && nvm "$@"; }
+  node() { lazy_load_nvm && node "$@"; }
+  npm() { lazy_load_nvm && npm "$@"; }
+  npx() { lazy_load_nvm && npx "$@"; }
+  pnpm() { lazy_load_nvm && pnpm "$@"; }
+  codex() { lazy_load_nvm && codex "$@" }
+else
+  # Eagerly load NVM in non-interactive shells
   if [ -s "/opt/homebrew/opt/nvm/nvm.sh" ]; then
     \. "/opt/homebrew/opt/nvm/nvm.sh"
   elif [ -s "$NVM_DIR/nvm.sh" ]; then
     \. "$NVM_DIR/nvm.sh"
   fi
-}
-nvm() { lazy_load_nvm && nvm "$@"; }
-node() { lazy_load_nvm && node "$@"; }
-npm() { lazy_load_nvm && npm "$@"; }
-npx() { lazy_load_nvm && npx "$@"; }
-pnpm() { lazy_load_nvm && pnpm "$@"; }
+fi
 
 # Powerlevel10k config
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
