@@ -16,6 +16,8 @@ Strong success criteria let Claude loop independently.
 
 ## Other instructions
 
+When you start work, always check out the main branch and `git pull`. If the repository is a fork, also make sure the fork is up to date with upstream.
+
 Use `gh` CLI to interact with GitHub.
 
 When making a PR, use the PR template from the repository. DO NOT REMOVE ANYTHING from the template. If there is a choice of type of PR, do not remove the unchecked checkboxes.
