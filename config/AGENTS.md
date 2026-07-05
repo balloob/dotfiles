@@ -20,7 +20,7 @@ When you start work, always check out the main branch and `git pull`. If the rep
 
 Use `gh` CLI to interact with GitHub.
 
-Don't force push when a PR is open.
+Don't force push when a PR is open, unless you're resolving merge conflicts by rebasing.
 
 When making a PR, use the PR template from the repository. DO NOT REMOVE ANYTHING from the template. If there is a choice of type of PR, do not remove the unchecked checkboxes.
 
