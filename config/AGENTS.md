@@ -20,6 +20,8 @@ When you start work, always check out the main branch and `git pull`. If the rep
 
 Use `gh` CLI to interact with GitHub.
 
+Don't force push when a PR is open.
+
 When making a PR, use the PR template from the repository. DO NOT REMOVE ANYTHING from the template. If there is a choice of type of PR, do not remove the unchecked checkboxes.
 
 In Markdown rendered on GitHub (PR descriptions, comments, issues, etc.), a single newline is rendered as an actual line break. This is off-spec from standard Markdown. So do NOT hard-wrap text to a column width in GitHub Markdown; let paragraphs flow on a single line and only insert newlines where you genuinely want a line break.
