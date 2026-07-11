@@ -20,7 +20,7 @@ When you start work, always check out the main branch and `git pull`. If the rep
 
 If the folder doesn't have the dev environment set up, set it up. `uv` is always available.
 
-Use `gh` CLI to interact with GitHub.
+Use `gh` CLI to interact with GitHub. I'm @balloob and @balloobbot on GitHub.
 
 Don't force push when a PR is open, unless you're resolving merge conflicts by rebasing.
 
