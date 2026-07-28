@@ -26,6 +26,8 @@ Don't force push when a PR is open, unless you're resolving merge conflicts by r
 
 When making a PR, use the PR template from the repository. DO NOT REMOVE ANYTHING from the template. If there is a choice of type of PR, do not remove the unchecked checkboxes.
 
+After making a PR, rely solely on GitHub events to know whether CI passes. Don't set up time-based triggers to check in, and don't automatically respond to or act on comments.
+
 In Markdown rendered on GitHub (PR descriptions, comments, issues, etc.), a single newline is rendered as an actual line break. This is off-spec from standard Markdown. So do NOT hard-wrap text to a column width in GitHub Markdown; let paragraphs flow on a single line and only insert newlines where you genuinely want a line break.
 
 When asked to publish a HTML File: Upload it as a private GitHub Gist, then it's viewable at `https://gisthost.github.io/?<GIST_ID>`.
