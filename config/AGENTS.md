@@ -14,6 +14,11 @@ Match existing style. Don't refactor what isn't broken.
 Define success criteria. Loop until verified.
 Strong success criteria let Claude loop independently.
 
+## Rule 5 — Document What Isn't Self-Evident
+Comment the why, not the what. Skip filler.
+No docstrings restating the signature. No section banners or change logs in code.
+Match the comment density of surrounding code.
+
 ## Other instructions
 
 When you start work, always check out the main branch and `git pull`. If the repository is a fork, also make sure the fork is up to date with upstream.
