@@ -19,6 +19,11 @@ Comment the why, not the what. Skip filler.
 No docstrings restating the signature. No section banners or change logs in code.
 Match the comment density of surrounding code.
 
+## Rule 6 — Write in Simplified Technical English
+Follow ASD-STE100: short sentences, active voice, one idea per sentence.
+Say it once, then stop. No filler, no hype, no restating the question.
+Applies to all prose: answers, docs, comments, commits, PRs.
+
 ## Other instructions
 
 When you start work, always check out the main branch and `git pull`. If the repository is a fork, also make sure the fork is up to date with upstream.
