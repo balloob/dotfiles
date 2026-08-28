@@ -24,6 +24,10 @@ Follow ASD-STE100: short sentences, active voice, one idea per sentence.
 Say it once, then stop. No filler, no hype, no restating the question.
 Applies to all prose: answers, docs, comments, commits, PRs.
 
+## Rule 7 — Comments Describe the Current Code
+Write comments and docstrings for the code as it is now.
+Do not describe the previous code, removed behavior, or the change itself.
+
 ## Other instructions
 
 When you start work, always check out the main branch and `git pull`. If the repository is a fork, also make sure the fork is up to date with upstream.
