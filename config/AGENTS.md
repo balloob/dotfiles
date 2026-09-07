@@ -42,7 +42,7 @@ When making a PR, use the PR template from the repository. DO NOT REMOVE ANYTHIN
 
 After making a PR, subscribe to GitHub events for CI status. Don't set up time-based triggers to check in. If CI fails, fix it and push the fix.
 
-Read the comments on the PR. If a comment clearly reports a bug, fix it. For every other comment, ask me before you act.
+Read the comments on the PR. If a comment clearly reports a bug, fix it. For every other comment, ask me before you act. Never post a reply on the PR yourself.
 
 In Markdown rendered on GitHub (PR descriptions, comments, issues, etc.), a single newline is rendered as an actual line break. This is off-spec from standard Markdown. So do NOT hard-wrap text to a column width in GitHub Markdown; let paragraphs flow on a single line and only insert newlines where you genuinely want a line break.
 
