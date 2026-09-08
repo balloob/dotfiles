@@ -40,6 +40,8 @@ Don't force push when a PR is open, unless you're resolving merge conflicts by r
 
 When making a PR, use the PR template from the repository. DO NOT REMOVE ANYTHING from the template. If there is a choice of type of PR, do not remove the unchecked checkboxes.
 
+Keep the PR description succinct and to the point. Use a single paragraph if you can.
+
 After making a PR, subscribe to GitHub events for CI status. Don't set up time-based triggers to check in. If CI fails, fix it and push the fix.
 
 Read the comments on the PR. If a comment clearly reports a bug, fix it. For every other comment, ask me before you act. Never post a reply on the PR yourself.
