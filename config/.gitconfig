@@ -1,6 +1,17 @@
 [core]
 	editor = vim
 	excludesfile = ~/.gitignore
+	pager = delta
+
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+	navigate = true
+	line-numbers = true
+
+[diff]
+	colorMoved = default
 
 [pull]
 	ff = only
@@ -22,12 +33,13 @@
 
 [grep]
   linenumber = true
-[filter "lfs"]
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
 [init]
 	defaultBranch = main
 [rerere]
 	enabled = true
+
+# Machine-local settings that must not be shared: git author identity above all.
+# Untracked and outside this repo, so anyone cloning these dotfiles does not
+# inherit someone else's name on their commits. Git ignores it if absent.
+[include]
+	path = ~/.gitconfig-local
