@@ -25,6 +25,7 @@ fi
 
 # ZSH
 ln -sf $DOTFILES_DIR/config/.zshrc ~/.zshrc
+ln -sf $DOTFILES_DIR/config/.zshenv ~/.zshenv
 
 # Oh My ZSH
 echo

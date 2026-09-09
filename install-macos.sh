@@ -16,15 +16,9 @@ fi
 echo -e "\n${GREEN}Installing Homebrew packages from Brewfile...${NC}"
 brew bundle --file="$DOTFILES_DIR/Brewfile"
 
-# Install Codex CLI via npm so it can update itself independently of Homebrew.
-echo -e "\n${GREEN}Installing Codex CLI via npm...${NC}"
-if command -v npm &> /dev/null; then
-    npm install -g @openai/codex
-    echo -e "${GREEN}Codex CLI installed${NC}"
-    echo -e "${GREEN}Run 'codex app' to download and launch the Codex macOS app.${NC}"
-else
-    echo -e "${YELLOW}npm not found. Skipping Codex CLI install.${NC}"
-fi
+# Node.js LTS via mise (installed from the Brewfile).
+echo -e "\n${GREEN}Installing Node.js LTS via mise...${NC}"
+mise use -g node@lts
 
 # Apply macOS system preferences
 echo -e "\n${GREEN}Applying macOS system preferences...${NC}"
@@ -35,3 +29,6 @@ curl -fsSL https://claude.ai/install.sh | bash
 
 # OpenCode
 curl -fsSL https://opencode.ai/install | bash
+
+# Codex CLI (self-updating standalone binary; `codex update` thereafter)
+curl -fsSL https://chatgpt.com/codex/install.sh | sh
