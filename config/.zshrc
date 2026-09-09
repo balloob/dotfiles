@@ -20,6 +20,10 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Plugins (note: zsh-syntax-highlighting must be last)
 plugins=(zsh-autosuggestions zsh-syntax-highlighting)
 
+# Update oh-my-zsh by hand with `omz update`. The automatic check runs on every
+# shell start and is the single slowest part of it.
+zstyle ':omz:update' mode disabled
+
 source $ZSH/oh-my-zsh.sh
 
 # Disable share history across consoles
@@ -45,9 +49,16 @@ if command -v mise >/dev/null 2>&1; then
   eval "$(mise activate zsh)"
 fi
 
-# fzf key bindings and completion.
-if command -v fzf >/dev/null 2>&1; then
-  eval "$(fzf --zsh)"
+# fzf key bindings and completion. Generating these is slow, so cache the
+# result and rebuild it only when the fzf binary is newer than the cache.
+if (( $+commands[fzf] )); then
+  fzf_init=${XDG_CACHE_HOME:-$HOME/.cache}/fzf-init.zsh
+  if [[ ! -s $fzf_init || $commands[fzf] -nt $fzf_init ]]; then
+    mkdir -p ${fzf_init:h}
+    fzf --zsh > $fzf_init
+  fi
+  source $fzf_init
+  unset fzf_init
 fi
 
 # Powerlevel10k config
