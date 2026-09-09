@@ -1,2 +1,2 @@
-# fzf
-[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh
+# Machine-specific Linux settings. Nothing needed yet - fzf and the rest of
+# the CLI tools come from mise and are wired up in .zshrc.

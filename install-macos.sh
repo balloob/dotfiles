@@ -12,13 +12,10 @@ else
     echo -e "${GREEN}Homebrew already installed${NC}"
 fi
 
-# Install Homebrew packages from Brewfile
+# Install Homebrew packages from Brewfile. This is also what puts mise on disk;
+# install.sh links config/mise.toml and runs `mise install` once this returns.
 echo -e "\n${GREEN}Installing Homebrew packages from Brewfile...${NC}"
 brew bundle --file="$DOTFILES_DIR/Brewfile"
-
-# Node.js LTS via mise (installed from the Brewfile).
-echo -e "\n${GREEN}Installing Node.js LTS via mise...${NC}"
-mise use -g node@lts
 
 # Apply macOS system preferences
 echo -e "\n${GREEN}Applying macOS system preferences...${NC}"
@@ -27,8 +24,12 @@ echo -e "\n${GREEN}Applying macOS system preferences...${NC}"
 # Claude Code
 curl -fsSL https://claude.ai/install.sh | bash
 
-# OpenCode
-curl -fsSL https://opencode.ai/install | bash
+# OpenCode. --no-modify-path: ~/.zshenv owns PATH, so the installer must not
+# append its own export to .zshrc.
+curl -fsSL https://opencode.ai/install | bash -s -- --no-modify-path
 
-# Codex CLI (self-updating standalone binary; `codex update` thereafter)
-curl -fsSL https://chatgpt.com/codex/install.sh | sh
+# Codex CLI (self-updating standalone binary; `codex update` thereafter).
+# It has no --no-modify-path flag, but skips writing to shell config when its
+# install dir is already on PATH, which ~/.zshenv guarantees for zsh. Set it
+# here too so the same holds when this bash script runs from a bare login.
+curl -fsSL https://chatgpt.com/codex/install.sh | PATH="$HOME/.local/bin:$PATH" sh

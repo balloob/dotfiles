@@ -23,6 +23,15 @@ else
     source "$DOTFILES_DIR/install-linux.sh"
 fi
 
+# mise. Link the tracked tool manifest, then install everything it declares.
+# This runs after the platform installer, which is what puts mise on disk:
+# Homebrew on macOS, mise.run on Linux.
+echo
+echo "** Installing mise-managed tools"
+mkdir -p ~/.config/mise
+ln -sf $DOTFILES_DIR/config/mise.toml ~/.config/mise/config.toml
+PATH="$HOME/.local/bin:/opt/homebrew/bin:$PATH" mise install
+
 # ZSH
 ln -sf $DOTFILES_DIR/config/.zshrc ~/.zshrc
 ln -sf $DOTFILES_DIR/config/.zshenv ~/.zshenv
@@ -50,10 +59,12 @@ else
     ln -sf $DOTFILES_DIR/config/.zshrc-local.linux ~/.zshrc-local
 fi
 
-# uv
+# uv. INSTALLER_NO_MODIFY_PATH: uv appends to .zshrc and .zshenv by default,
+# and ~/.zshenv is a symlink into this repo, so an unguarded install would edit
+# a tracked file. ~/.zshenv already puts ~/.local/bin on PATH.
 echo
 echo "** Installing uv"
-curl -LsSf https://astral.sh/uv/install.sh | sh
+curl -LsSf https://astral.sh/uv/install.sh | INSTALLER_NO_MODIFY_PATH=1 sh
 
 # OpenCode config
 mkdir -p ~/.config/opencode
