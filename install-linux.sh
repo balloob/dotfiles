@@ -26,18 +26,16 @@ rm ./gh_*_linux_${ARCH}.deb
 # UV
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
-# NVM/Node.js (PROFILE=/dev/null prevents nvm from modifying shell config)
-export NVM_DIR="$HOME/.nvm"
-NVM_VERSION=v0.40.3
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/$NVM_VERSION/install.sh | PROFILE=/dev/null bash
-
-source "$NVM_DIR/nvm.sh"
-
-nvm install --lts
-nvm use --lts
+# mise (runtime version manager) + Node.js LTS. mise's shims give every shell —
+# interactive or not — a real node/npm on PATH (see config/.zshenv).
+curl -fsSL https://mise.run | sh
+"$HOME/.local/bin/mise" use -g node@lts
 
 # Claude Code
 curl -fsSL https://claude.ai/install.sh | bash
 
 # OpenCode
 curl -fsSL https://opencode.ai/install | bash
+
+# Codex CLI (self-updating standalone binary; `codex update` thereafter)
+curl -fsSL https://chatgpt.com/codex/install.sh | sh

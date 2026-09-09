@@ -36,34 +36,13 @@ note() { echo -e "\n\n[$(date "+%Y-%m-%d %H:%M:%S")]\n$*" >> ~/Notes/00\ To\ Do/
 export PATH="$HOME/.opencode/bin:./.venv/bin:./node_modules/.bin:~/bin:$HOME/.local/bin:$PATH"
 
 # Source local config (machine-specific settings like Homebrew)
-# Note: NVM should NOT be in .zshrc-local - it's lazy-loaded below
 source ~/.zshrc-local
 
-# NVM setup
-export NVM_DIR="$HOME/.nvm"
-if [[ -o interactive ]]; then
-  # Lazy load NVM in interactive shells for faster startup
-  lazy_load_nvm() {
-    unset -f nvm node npm npx pnpm codex
-    if [ -s "/opt/homebrew/opt/nvm/nvm.sh" ]; then
-      \. "/opt/homebrew/opt/nvm/nvm.sh"
-    elif [ -s "$NVM_DIR/nvm.sh" ]; then
-      \. "$NVM_DIR/nvm.sh"
-    fi
-  }
-  nvm() { lazy_load_nvm && nvm "$@"; }
-  node() { lazy_load_nvm && node "$@"; }
-  npm() { lazy_load_nvm && npm "$@"; }
-  npx() { lazy_load_nvm && npx "$@"; }
-  pnpm() { lazy_load_nvm && pnpm "$@"; }
-  codex() { lazy_load_nvm && codex "$@" }
-else
-  # Eagerly load NVM in non-interactive shells
-  if [ -s "/opt/homebrew/opt/nvm/nvm.sh" ]; then
-    \. "/opt/homebrew/opt/nvm/nvm.sh"
-  elif [ -s "$NVM_DIR/nvm.sh" ]; then
-    \. "$NVM_DIR/nvm.sh"
-  fi
+# mise: runtime version manager. Interactive activation adds the per-directory
+# version-switching hook; non-interactive shells get the runtimes from the shims
+# on PATH (see ~/.zshenv).
+if command -v mise >/dev/null 2>&1; then
+  eval "$(mise activate zsh)"
 fi
 
 # Powerlevel10k config
