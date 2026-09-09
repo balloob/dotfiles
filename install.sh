@@ -16,12 +16,35 @@ echo -e "${GREEN}Starting dotfiles installation...${NC}"
 ln -sf $DOTFILES_DIR/config/.gitconfig ~
 ln -sf $DOTFILES_DIR/config/.gitignore ~
 
+# Git author identity lives outside this repo so that cloning these dotfiles
+# does not put someone else's name on your commits. .gitconfig includes it.
+# Scaffold it commented out; never overwrite an existing one.
+if [ ! -e ~/.gitconfig-local ]; then
+    cat > ~/.gitconfig-local <<'EOF'
+# Machine-local git settings. Not tracked in the dotfiles repo.
+# Uncomment and fill in to set your git author identity.
+#[user]
+#	name = Your Name
+#	email = your@email.com
+EOF
+    echo "Created ~/.gitconfig-local - add your git author identity there."
+fi
+
 # Run platform-specific installer
 if [[ "$OSTYPE" == "darwin"* ]]; then
     source "$DOTFILES_DIR/install-macos.sh"
 else
     source "$DOTFILES_DIR/install-linux.sh"
 fi
+
+# mise. Link the tracked tool manifest, then install everything it declares.
+# This runs after the platform installer, which is what puts mise on disk:
+# Homebrew on macOS, mise.run on Linux.
+echo
+echo "** Installing mise-managed tools"
+mkdir -p ~/.config/mise
+ln -sf $DOTFILES_DIR/config/mise.toml ~/.config/mise/config.toml
+PATH="$HOME/.local/bin:/opt/homebrew/bin:$PATH" mise install
 
 # ZSH
 ln -sf $DOTFILES_DIR/config/.zshrc ~/.zshrc
@@ -50,10 +73,12 @@ else
     ln -sf $DOTFILES_DIR/config/.zshrc-local.linux ~/.zshrc-local
 fi
 
-# uv
+# uv. INSTALLER_NO_MODIFY_PATH: uv appends to .zshrc and .zshenv by default,
+# and ~/.zshenv is a symlink into this repo, so an unguarded install would edit
+# a tracked file. ~/.zshenv already puts ~/.local/bin on PATH.
 echo
 echo "** Installing uv"
-curl -LsSf https://astral.sh/uv/install.sh | sh
+curl -LsSf https://astral.sh/uv/install.sh | INSTALLER_NO_MODIFY_PATH=1 sh
 
 # OpenCode config
 mkdir -p ~/.config/opencode

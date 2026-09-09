@@ -1,0 +1,22 @@
+# Global runtime and CLI tool versions.
+# Symlinked to ~/.config/mise/config.toml by install.sh, so the same tools are
+# available on macOS and Linux without duplicating them in Brewfile and apt.
+#
+# Edit this file directly. Do NOT run `mise use -g` — it writes through the
+# symlink into this repo and dirties the working tree.
+#
+# Install everything declared here with: mise install
+
+[tools]
+# Runtimes
+node = "lts"
+go = "latest"
+rust = "latest"
+
+# CLI tools
+delta = "latest"
+fzf = "latest"
+gh = "latest"
+jq = "latest"
+ripgrep = "latest"
+tmux = "latest"
