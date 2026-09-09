@@ -10,17 +10,13 @@
 [tools]
 # Runtimes
 node = "lts"
-deno = "latest"
 go = "latest"
 rust = "latest"
 
-# CLI tools (previously brew on macOS, apt on Linux)
+# CLI tools
 delta = "latest"
 fzf = "latest"
 gh = "latest"
 jq = "latest"
 ripgrep = "latest"
 tmux = "latest"
-
-# Static site generator
-hugo = "latest"

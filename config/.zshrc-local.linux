@@ -1,2 +1,1 @@
-# Machine-specific Linux settings. Nothing needed yet - fzf and the rest of
-# the CLI tools come from mise and are wired up in .zshrc.
+# Machine-specific Linux settings.

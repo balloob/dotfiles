@@ -45,8 +45,7 @@ if command -v mise >/dev/null 2>&1; then
   eval "$(mise activate zsh)"
 fi
 
-# fzf key bindings and completion. `fzf --zsh` works the same on macOS and
-# Linux, so this replaces the old per-platform key-bindings.zsh paths.
+# fzf key bindings and completion.
 if command -v fzf >/dev/null 2>&1; then
   eval "$(fzf --zsh)"
 fi
