@@ -11,6 +11,7 @@ cask "affinity-designer"
 cask "arc"
 cask "balenaetcher"
 cask "bambu-studio"
+cask "beeper"
 cask "calibre"
 cask "chatgpt"
 cask "claude"
@@ -104,13 +105,12 @@ cask "opencode-desktop"
 cask "orbstack"
 cask "raspberry-pi-imager"
 cask "rectangle"
-cask "signal"
 cask "slack"
+cask "spokenly"
 cask "spotify"
 cask "tailscale-app"
 cask "visual-studio-code"
 cask "vlc"
-cask "whatsapp"
 cask "zoom"
 mas "Amphetamine", id: 937984704
 mas "Discovery", id: 1381004916
@@ -120,4 +120,3 @@ mas "NextDNS", id: 1464122853
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Pixelmator Pro", id: 1289583905
-mas "Spokenly", id: 6740315592
