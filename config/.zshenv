@@ -10,3 +10,8 @@
 # PATH for non-interactive shells, scripts and child processes (e.g. `env node`),
 # not just interactive prompts.
 export PATH="$HOME/.local/bin:$HOME/.local/share/mise/shims:$PATH"
+
+# Homebrew upgrades casks marked `auto_updates` by default. That quits running
+# apps to swap in a bundle their own updater already maintains. The Brewfile
+# still installs them on a new machine; they just update themselves after that.
+export HOMEBREW_NO_UPGRADE_AUTO_UPDATES_CASKS=1
