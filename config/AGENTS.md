@@ -54,6 +54,10 @@ When the change fixes a failure, quote the log, stack trace, or error output tha
 
 Don't force push when a PR is open, unless you're resolving merge conflicts by rebasing.
 
-After making a PR, subscribe to GitHub events for CI status. Don't set up time-based triggers to check in. If CI fails, fix it and push the fix.
+After making a PR, follow its CI until every check finishes. Never leave a PR of mine with a failed check.
+
+Subscribe to GitHub events for the CI status if your environment permits it. If it does not, schedule a timed follow-up and check the status again. Repeat until the checks finish.
+
+If CI fails, fix it and push the fix.
 
 Read the comments on the PR. If a comment clearly reports a bug, fix it. For every other comment, ask me before you act. Never post a reply on the PR yourself.
