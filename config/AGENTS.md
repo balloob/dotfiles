@@ -38,11 +38,27 @@ Use `gh` CLI to interact with GitHub. I'm @balloob and @balloobbot on GitHub.
 
 In Markdown rendered on GitHub (PR descriptions, comments, issues, etc.), a single newline is rendered as an actual line break. This is off-spec from standard Markdown. So do NOT hard-wrap text to a column width in GitHub Markdown; let paragraphs flow on a single line and only insert newlines where you genuinely want a line break.
 
+## Sharing HTML output
+
+These two options are for local sessions. Use them only when `CLAUDE_CODE_ENVIRONMENT_KIND` is unset or `bridge`. The values `anthropic_cloud` and `byoc` mean a cloud sandbox: share a page as an artifact instead.
+
 When asked to publish a HTML File: Upload it as a private GitHub Gist, then it's viewable at `https://gisthost.github.io/?<GIST_ID>`.
 
 ```bash
 gh gist create architecture.html
 ```
+
+If artifacts or a built-in website preview are unavailable, use a Cloudflare Quick Tunnel to share a running local website. The dotfiles installer includes `cloudflared` through mise on Linux and macOS.
+
+Start the website on localhost and check that it responds. For static files, serve only the output directory: `python3 -m http.server 8000 --bind 127.0.0.1 --directory <site-directory>`. Then run:
+
+```bash
+cloudflared tunnel --url http://localhost:8000 --output json
+```
+
+Use the website's actual port. Read the `https://*.trycloudflare.com` URL from the JSON log messages, then verify that it serves the expected page before sharing it. Keep the server and tunnel running while the user tests. The URL stops working when either process stops.
+
+Quick Tunnels are public and need no Cloudflare account. Serve only content intended for public preview. Use them for temporary testing, not permanent hosting.
 
 ## Pull requests
 
