@@ -282,6 +282,14 @@ defaults write com.apple.menuextra.clock ShowDayOfWeek -bool true
 defaults write com.apple.menuextra.clock ShowDate -int 0
 
 ###############################################################################
+# Default applications                                                        #
+###############################################################################
+
+# Open Markdown files in MDHero
+# macOS asks the user to confirm this change
+osascript -l JavaScript -e "ObjC.import('CoreServices'); \$.LSSetDefaultRoleHandlerForContentType(\$('net.daringfireball.markdown'), 0xFFFFFFFF, \$('com.mdhero.app'))" > /dev/null
+
+###############################################################################
 # Kill affected applications                                                  #
 ###############################################################################
 
