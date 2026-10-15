@@ -14,6 +14,7 @@ go = "latest"
 rust = "latest"
 
 # CLI tools
+cloudflared = "latest"
 delta = "latest"
 fzf = "latest"
 gh = "latest"
