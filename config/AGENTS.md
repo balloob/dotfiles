@@ -68,6 +68,8 @@ PR descriptions: at most 50 words in the summary section. Say what changed and w
 
 When the change fixes a failure, quote the log, stack trace, or error output that shows it, whether it opened the session or arrived later. Quoted evidence is not prose, so it does not count against the 50 words and the paths inside it are fine. Show the failure the change fixes, never output from your own verification runs. Collapse it in a `<details>` block when it runs more than about 20 lines.
 
+Attach images and videos with `--attach <file>` on `gh pr` and `gh issue` create, edit, and comment. If the Markdown already references the local file, `gh` rewrites that reference in place to point at the upload.
+
 Don't force push when a PR is open, unless you're resolving merge conflicts by rebasing.
 
 After making a PR, follow its CI until every check finishes. Never leave a PR of mine with a failed check.
