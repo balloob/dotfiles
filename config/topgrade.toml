@@ -1,0 +1,12 @@
+# Run `topgrade` to update Homebrew, mise tools, oh-my-zsh, gh extensions,
+# agent CLIs and more in one go.
+# Symlinked to ~/.config/topgrade.toml by install.sh.
+
+[misc]
+# mise installs topgrade, so `mise upgrade` updates it.
+no_self_update = true
+
+# containers: pulls every local Docker image again.
+# ollama: pulls every local model again, which is many gigabytes.
+# pip3: upgrades pip for the system Python. uv manages Python.
+disable = ["containers", "ollama", "pip3"]

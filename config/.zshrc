@@ -24,6 +24,18 @@ plugins=(zsh-autosuggestions zsh-syntax-highlighting)
 # shell start and is the single slowest part of it.
 zstyle ':omz:update' mode disabled
 
+# mise completions. They must be on fpath before oh-my-zsh runs compinit.
+# Cache them and rebuild only when the mise binary is newer than the cache.
+if (( $+commands[mise] )); then
+  mise_comp_dir=${XDG_CACHE_HOME:-$HOME/.cache}/zsh-completions
+  if [[ ! -s $mise_comp_dir/_mise || $commands[mise] -nt $mise_comp_dir/_mise ]]; then
+    mkdir -p $mise_comp_dir
+    mise completion zsh > $mise_comp_dir/_mise
+  fi
+  fpath=($mise_comp_dir $fpath)
+  unset mise_comp_dir
+fi
+
 source $ZSH/oh-my-zsh.sh
 
 # Disable share history across consoles
@@ -31,6 +43,8 @@ unsetopt share_history
 
 # Disable auto cd (typing directory name changes to it)
 unsetopt AUTO_CD
+
+export RIPGREP_CONFIG_PATH=~/.ripgreprc
 
 # Aliases
 alias gs="git status -sb"
