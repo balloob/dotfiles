@@ -3,7 +3,7 @@
 ## Project Structure & Module Organization
 - `Brewfile` lists Homebrew packages, casks, and Mac App Store apps. macOS only.
 - `config/mise.toml` lists runtimes and CLI tools managed by mise. Cross-platform;
-  symlinked to `~/.config/mise/config.toml`. Prefer this over `Brewfile`/apt for
+  symlinked to `~/.config/mise/conf.d/dotfiles.toml`. Prefer this over `Brewfile`/apt for
   anything that ships as a single binary. mise manages runtimes and CLI tools;
   `uv` manages Python packages.
 - `install.sh` bootstraps a new machine (installs tools and creates symlinks).
@@ -20,12 +20,15 @@
 - `brew bundle dump --force --no-vscode` updates `Brewfile` after app changes.
   Review the diff: it re-adds transitive dependencies and anything installed
   ad hoc, including tools that belong in `config/mise.toml`.
+- `topgrade` updates everything in one run: Homebrew, mise and its tools,
+  oh-my-zsh, gh extensions, agent CLIs. `config/topgrade.toml` configures it.
 - `brew update && brew upgrade` keeps Homebrew packages current.
 - `mise install` installs everything declared in `config/mise.toml`.
 - `mise upgrade` updates the mise-managed tools.
 - `mise self-update` updates mise itself (macOS installs it via mise.run, not Homebrew).
-- Edit `config/mise.toml` by hand. Do not run `mise use -g`; it writes through
-  the symlink into this repo.
+- Edit `config/mise.toml` by hand for tools every machine needs. `mise use -g`
+  adds a new tool to the machine-local `~/.config/mise/config.toml`. For a tool
+  already in `config/mise.toml`, it edits that file in this repo.
 
 ## Coding Style & Naming Conventions
 - Match existing file style in the directory you edit; dotfile sources live in `config/`.

@@ -39,11 +39,26 @@ fi
 
 # mise. Link the tracked tool manifest, then install everything it declares.
 # This runs after the platform installer, which puts mise on disk via mise.run.
+# mise loads conf.d/*.toml as global config, but `mise use -g` adds new tools
+# to config.toml. A config.toml symlink into this repo would let it edit this repo,
+# so remove one if it exists.
 echo
 echo "** Installing mise-managed tools"
-mkdir -p ~/.config/mise
-ln -sf $DOTFILES_DIR/config/mise.toml ~/.config/mise/config.toml
+mkdir -p ~/.config/mise/conf.d
+if [ "$(readlink ~/.config/mise/config.toml)" = "$DOTFILES_DIR/config/mise.toml" ]; then
+    rm ~/.config/mise/config.toml
+fi
+ln -sf $DOTFILES_DIR/config/mise.toml ~/.config/mise/conf.d/dotfiles.toml
 PATH="$HOME/.local/bin:/opt/homebrew/bin:$PATH" mise install
+
+# topgrade updates everything in one run. mise installs it from config/mise.toml.
+ln -sf $DOTFILES_DIR/config/topgrade.toml ~/.config/topgrade.toml
+
+# ripgrep reads this file through RIPGREP_CONFIG_PATH, set in .zshrc.
+ln -sf $DOTFILES_DIR/config/.ripgreprc ~/.ripgreprc
+
+# EditorConfig defaults for projects that do not override them.
+ln -sf $DOTFILES_DIR/config/.editorconfig ~/.editorconfig
 
 # ZSH
 ln -sf $DOTFILES_DIR/config/.zshrc ~/.zshrc

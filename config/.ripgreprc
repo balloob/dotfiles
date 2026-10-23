@@ -1,0 +1,8 @@
+# Search hidden files and directories. .gitignore still applies.
+--hidden
+
+# --hidden also searches the .git directory, which is never wanted.
+--glob=!.git/
+
+# Skip huge files such as binary blobs and minified bundles.
+--max-filesize=5M
