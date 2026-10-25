@@ -78,4 +78,4 @@ Subscribe to GitHub events for the CI status if your environment permits it. If 
 
 If CI fails, fix it and push the fix.
 
-Read the comments on the PR. If a comment clearly reports a bug, fix it. For every other comment, ask me before you act. Never post a reply on the PR yourself.
+Read the comments on the PR. If a comment clearly reports a bug that this PR causes, fix it. Review bots such as Copilot often report scope creep as a bug: a problem that existed before the PR, an edge case outside the goal of the PR, extra hardening, or a change to code that the PR does not touch. For those, and for every other comment, ask me before you act. If you are not sure, ask. Never post a reply on the PR yourself.
