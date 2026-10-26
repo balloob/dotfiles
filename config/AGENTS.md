@@ -79,3 +79,14 @@ Subscribe to GitHub events for the CI status if your environment permits it. If 
 If CI fails, fix it and push the fix.
 
 Read the comments on the PR. If a comment clearly reports a bug that this PR causes, fix it. Review bots such as Copilot often report scope creep as a bug: a problem that existed before the PR, an edge case outside the goal of the PR, extra hardening, or a change to code that the PR does not touch. For those, and for every other comment, ask me before you act. If you are not sure, ask. Never post a reply on the PR yourself.
+
+## Screenshots from a fork
+
+`gh pr create --attach` (and `edit` or `comment`) needs write access to the upstream repository and fails with "attaching files requires write access to the repository" when the user only has triage access. When the pull request comes from a fork, upload the file against the fork instead, through the same endpoint gh uses, and use the returned URL in the body:
+
+```sh
+gh api repos/<owner>/<fork> --jq .id
+gh api -X POST "https://uploads.github.com/user-attachments/assets?name=<file>.png&content_type=image/png&repository_id=<fork id>" -H "Content-Type: application/octet-stream" --input <path to file> --jq .url
+```
+
+The forks have issues turned off, so don't try a throwaway issue. The returned link renders in the pull request.
