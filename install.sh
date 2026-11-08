@@ -98,11 +98,12 @@ curl -LsSf https://astral.sh/uv/install.sh | INSTALLER_NO_MODIFY_PATH=1 sh
 mkdir -p ~/.config/opencode
 ln -sf $DOTFILES_DIR/config/opencode.json ~/.config/opencode/opencode.json
 
-# AI agent config (Claude Code & OpenCode)
+# AI agent config (Claude Code, Codex & OpenCode)
 echo
 echo "** Setting up AI agent config"
-mkdir -p ~/.claude
+mkdir -p ~/.claude ~/.codex
 ln -sf $DOTFILES_DIR/config/AGENTS.md ~/.claude/CLAUDE.md
+ln -sf "$DOTFILES_DIR/config/AGENTS.md" ~/.codex/AGENTS.md
 ln -sf $DOTFILES_DIR/config/AGENTS.md ~/.config/opencode/AGENTS.md
 
 echo
