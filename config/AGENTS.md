@@ -72,9 +72,9 @@ Attach images and videos with `--attach <file>` on `gh pr` and `gh issue` create
 
 Don't force push when a PR is open, unless you're resolving merge conflicts by rebasing.
 
-After making a PR, follow its CI until every check finishes. Never leave a PR of mine with a failed check.
+After creating or updating a PR, monitor CI and new review comments until the PR is merged or closed, or I ask you to stop. Set up monitoring without asking me. Never leave a PR of mine with a failed check.
 
-Subscribe to GitHub events for the CI status if your environment permits it. If it does not, schedule a timed follow-up and check the status again. Repeat until the checks finish.
+Subscribe to GitHub events for CI status and new review comments if your environment permits it. If it does not, schedule timed follow-ups to check for updates.
 
 If CI fails, fix it and push the fix.
 
