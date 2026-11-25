@@ -53,8 +53,10 @@ note() { echo -e "\n\n[$(date "+%Y-%m-%d %H:%M:%S")]\n$*" >> ~/Notes/00\ To\ Do/
 # PATH setup (before lazy-loaded tools)
 export PATH="$HOME/.opencode/bin:./.venv/bin:./node_modules/.bin:~/bin:$HOME/.local/bin:$PATH"
 
-# Source local config (machine-specific settings like Homebrew)
+# Source OS-specific config (settings like Homebrew)
 source ~/.zshrc-local
+# Source settings for this machine only. The file is not in this repository.
+[[ -f ~/.zshrc-machine ]] && source ~/.zshrc-machine
 
 # mise: runtime version manager. Interactive activation adds the per-directory
 # version-switching hook; non-interactive shells get the runtimes from the shims

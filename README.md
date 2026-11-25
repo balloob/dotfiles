@@ -8,6 +8,8 @@ You need to tell VS Code to use this dotfiles repository. It will be automatical
 
 These dotfiles do not contain the Git author identity. On a normal machine, put it in `~/.gitconfig-local`. That file stays outside this repo, and `.gitconfig` includes it. In a dev container, set it with the environment variables below.
 
+Put shell settings for one machine only, such as aliases, in `~/.zshrc-machine`. That file also stays outside this repo, and `.zshrc` sources it if it exists.
+
 Add this to your VS Code settings:
 
 ```json
